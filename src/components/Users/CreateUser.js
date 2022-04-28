@@ -19,7 +19,9 @@ const CreateUser = (props) => {
       return;
     }
 
-    console.log(inputName, inputAge);
+    // нам нужно передавать эти значения в компонент App при пом пропс
+    // console.log(inputName, inputAge);
+    props.onCreateUser(inputName, inputAge);
 
     // сброс инпута
     setInputName('');
