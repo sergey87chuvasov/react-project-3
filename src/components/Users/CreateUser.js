@@ -10,7 +10,20 @@ const CreateUser = (props) => {
 
   const createUserHandler = (event) => {
     event.preventDefault();
+
+    if (inputName.trim().length === 0 || inputAge.trim().length === 0) {
+      return;
+    }
+
+    if (+inputAge < 1) {
+      return;
+    }
+
     console.log(inputName, inputAge);
+
+    // сброс инпута
+    setInputName('');
+    setInputAge('');
   };
 
   const nameChangeHandler = (event) => {
@@ -25,9 +38,19 @@ const CreateUser = (props) => {
     <Card className={styles.input}>
       <form onSubmit={createUserHandler}>
         <label htmlFor='name'>Имя</label>
-        <input id='name' type='text' onChange={nameChangeHandler} />
+        <input
+          id='name'
+          type='text'
+          onChange={nameChangeHandler}
+          value={inputName}
+        />
         <label htmlFor='age'>Возраст</label>
-        <input id='age' type='number' onChange={ageChangeHandler} />
+        <input
+          id='age'
+          type='number'
+          onChange={ageChangeHandler}
+          value={inputAge}
+        />
         {/* <button type='submit'>Добавить пользователя</button> */}
         <Button type='submit'>Добавить пользователя</Button>
       </form>
